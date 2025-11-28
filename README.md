@@ -1,1 +1,1 @@
-# Project-Individu-PBO
+Proyek Java ini mensimulasikan sistem pengelolaan penumpang untuk satu unit bus Trans Koetaradja. Program ini mengatur proses naik dan turun penumpang, menghitung pendapatan, dan menerapkan aturan kapasitas serta prioritas tempat duduk secara ketat.
