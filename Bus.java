@@ -17,4 +17,12 @@ public class Bus {
     private static final int ONGKOS_BUS = 2000;
     
     // totalPendapatan [cite: 25]
-    private int totalPendapatan; // total pendapatan bus per hari bermula dari nilai 0 
+    private int totalPendapatan; // total pendapatan bus per hari bermula dari nilai 0
+
+    // Constructor
+    public Bus() { // + Bus() 
+        this.penumpangBiasa = new ArrayList<>();
+        this.penumpangPrioritas = new ArrayList<>();
+        this.penumpangBerdiri = new ArrayList<>();
+        this.totalPendapatan = 0;
+    }
