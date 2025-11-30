@@ -26,3 +26,21 @@ public class Bus {
         this.penumpangBerdiri = new ArrayList<>();
         this.totalPendapatan = 0;
     }
+
+        //Accessor Methods (Getter)
+
+    public List<Penumpang> getPenumpangBiasa() { // + getPenumpang Biasa(): Penumpang[] 
+        return penumpangBiasa;
+    }
+
+    public List<Penumpang> getPenumpangPrioritas() { // + getPenumpang Prioritas(): Penumpang[] 
+        return penumpangPrioritas;
+    }
+
+    public List<Penumpang> getPenumpangBerdiri() { // + getPenumpang Berdiri(): Penumpang[] 
+        return penumpangBerdiri;
+    }
+
+    public int getJumlahPenumpangBiasa() { // + getJumlahPenumpang Biasa(): int 
+        return penumpangBiasa.size();
+    }
