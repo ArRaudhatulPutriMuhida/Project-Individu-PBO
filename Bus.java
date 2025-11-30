@@ -60,3 +60,65 @@ public class Bus {
     public int getTotalPendapatan() {
         return totalPendapatan;
     }
+
+    // + naikkan Penumpang (penumpang: Penumpang): Boolean [cite: 33]
+    public boolean naikkanPenumpang(Penumpang penumpang) {
+        
+        // Cek kapasitas total bus 
+        if (getJumlahSemuaPenumpang() >= KAPASITAS_TOTAL) {
+            System.out.println("Gagal Naik: Bus sudah penuh (Kapasitas Maksimal: " + KAPASITAS_TOTAL + " orang).");
+            return false;
+        }
+
+        // Cek saldo penumpang 
+        if (penumpang.getSaldo() < ONGKOS_BUS) {
+            System.out.println("Gagal Naik: Saldo tidak mencukupi (Sisa: Rp" + penumpang.getSaldo() + ". Ongkos: Rp" + ONGKOS_BUS + ").");
+            return false;
+        }
+
+        boolean berhasilDuduk = false;
+
+        if (penumpang.isPrioritas()) {
+            // Logika Penumpang Prioritas: Boleh duduk di Prioritas atau Biasa
+            
+            // 1. Coba kursi Prioritas
+            if (getJumlahPenumpangPrioritas() < KAPASITAS_KURSI_PRIORITAS) {
+                penumpangPrioritas.add(penumpang);
+                System.out.println(" " + penumpang.getNama() + " berhasil duduk di Kursi Prioritas.");
+                berhasilDuduk = true;
+            }
+            // 2. Coba kursi Biasa (jika Prioritas penuh)
+            else if (getJumlahPenumpangBiasa() < KAPASITAS_KURSI_BIASA) {
+                penumpangBiasa.add(penumpang);
+                System.out.println(" " + penumpang.getNama() + " berhasil duduk di Kursi Biasa (Prioritas penuh).");
+                berhasilDuduk = true;
+            }
+        } else {
+            // Logika Penumpang Biasa: Dilarang duduk di Prioritas
+            
+            // 1. Coba kursi Biasa
+            if (getJumlahPenumpangBiasa() < KAPASITAS_KURSI_BIASA) {
+                penumpangBiasa.add(penumpang);
+                System.out.println(" " + penumpang.getNama() + " berhasil duduk di Kursi Biasa.");
+                berhasilDuduk = true;
+            }
+        }
+
+        // Jika tidak dapat duduk (berhasilDuduk masih false), cek apakah masih bisa berdiri 
+        if (!berhasilDuduk && getJumlahPenumpangBerdiri() < KAPASITAS_BERDIRI) {
+            penumpangBerdiri.add(penumpang);
+            System.out.println(" " + penumpang.getNama() + " berhasil naik dan BERDIRI (Kursi penuh).");
+            berhasilDuduk = true; // Berhasil naik (berdiri)
+        }
+
+        // Jika berhasil naik (duduk atau berdiri), proses pembayaran
+        if (berhasilDuduk) {
+            penumpang.kurangiSaldo(ONGKOS_BUS); // Kurangi saldo
+            this.totalPendapatan += ONGKOS_BUS; // Tambah pendapatan
+            return true;
+        } else {
+            // Kondisi ini hanya terjadi jika semua kapasitas sudah penuh (duduk dan berdiri)
+            System.out.println("Gagal Naik: Kursi dan tempat berdiri sudah penuh.");
+            return false;
+        }
+    }
