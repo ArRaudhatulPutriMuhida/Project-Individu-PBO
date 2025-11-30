@@ -44,3 +44,19 @@ public class Bus {
     public int getJumlahPenumpangBiasa() { // + getJumlahPenumpang Biasa(): int 
         return penumpangBiasa.size();
     }
+
+        public int getJumlahPenumpangPrioritas() { // + getJumlah Penumpang Prioritas(): int 
+        return penumpangPrioritas.size();
+    }
+
+    public int getJumlahPenumpangBerdiri() { // + getJumlah Penumpang Berdiri(): int 
+        return penumpangBerdiri.size();
+    }
+
+    public int getJumlahSemuaPenumpang() {
+        return getJumlahPenumpangBiasa() + getJumlahPenumpangPrioritas() + getJumlahPenumpangBerdiri();
+    }
+
+    public int getTotalPendapatan() {
+        return totalPendapatan;
+    }
