@@ -122,3 +122,32 @@ public class Bus {
             return false;
         }
     }
+
+    // + turunkan Penumpang
+    public boolean turunkanPenumpang(String nama) {
+        // Cari dan hapus dari Penumpang Biasa
+        for (int i = 0; i < penumpangBiasa.size(); i++) {
+            if (penumpangBiasa.get(i).getNama().equalsIgnoreCase(nama)) {
+                penumpangBiasa.remove(i);
+                return true;
+            }
+        }
+
+        // Cari dan hapus dari Penumpang Prioritas
+        for (int i = 0; i < penumpangPrioritas.size(); i++) {
+            if (penumpangPrioritas.get(i).getNama().equalsIgnoreCase(nama)) {
+                penumpangPrioritas.remove(i);
+                return true;
+            }
+        }
+
+        // Cari dan hapus dari Penumpang Berdiri
+        for (int i = 0; i < penumpangBerdiri.size(); i++) {
+            if (penumpangBerdiri.get(i).getNama().equalsIgnoreCase(nama)) {
+                penumpangBerdiri.remove(i);
+                return true;
+            }
+        }
+
+        return false; // Penumpang tidak ditemukan
+    }
