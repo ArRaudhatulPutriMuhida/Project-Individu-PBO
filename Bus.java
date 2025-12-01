@@ -151,3 +151,54 @@ public class Bus {
 
         return false; // Penumpang tidak ditemukan
     }
+
+    // Method toString() untuk mencetak daftar penumpang dan pendapatan
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("---------------------------------------------------\n");
+        
+        // Penumpang Biasa
+        sb.append("Penumpang Biasa (Kursi): ");
+        if (penumpangBiasa.isEmpty()) {
+            sb.append("<kosong>\n");
+        } else {
+            List<String> namaBiasa = new ArrayList<>();
+            for (Penumpang p : penumpangBiasa) {
+                namaBiasa.add(p.getNama());
+            }
+            sb.append(String.join(", ", namaBiasa)).append(" (Jumlah: ").append(getJumlahPenumpangBiasa()).append("/").append(KAPASITAS_KURSI_BIASA).append(")\n");
+        }
+
+        // Penumpang Prioritas
+        sb.append("Penumpang Prioritas (Kursi): ");
+        if (penumpangPrioritas.isEmpty()) {
+            sb.append("<kosong>\n");
+        } else {
+            List<String> namaPrioritas = new ArrayList<>();
+            for (Penumpang p : penumpangPrioritas) {
+                namaPrioritas.add(p.getNama());
+            }
+            sb.append(String.join(", ", namaPrioritas)).append(" (Jumlah: ").append(getJumlahPenumpangPrioritas()).append("/").append(KAPASITAS_KURSI_PRIORITAS).append(")\n");
+        }
+        
+        // Penumpang Berdiri
+        sb.append("Penumpang Berdiri: ");
+        if (penumpangBerdiri.isEmpty()) {
+            sb.append("<kosong>\n");
+        } else {
+            List<String> namaBerdiri = new ArrayList<>();
+            for (Penumpang p : penumpangBerdiri) {
+                namaBerdiri.add(p.getNama());
+            }
+            sb.append(String.join(", ", namaBerdiri)).append(" (Jumlah: ").append(getJumlahPenumpangBerdiri()).append("/").append(KAPASITAS_BERDIRI).append(")\n");
+        }
+
+        sb.append("---------------------------------------------------\n");
+        sb.append("Jumlah Semua Penumpang: ").append(getJumlahSemuaPenumpang()).append("/").append(KAPASITAS_TOTAL).append("\n");
+        sb.append("Total Pendapatan Bus: Rp").append(totalPendapatan).append("\n");
+
+        return sb.toString();
+    }
+}
