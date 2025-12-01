@@ -16,3 +16,42 @@ public class Penumpang {
         this.hamil = hamil;
         this.saldo = saldoAwal; // Saldo diatur berdasarkan input
     }
+
+    // Methods Getter
+    public int getID() { 
+        return id;
+    }
+
+    public String getNama() {
+        return nama;
+    }
+
+    public int getUmur() { 
+        return umur;
+    }
+
+    public boolean isHamil() { 
+        return hamil;
+    }
+
+    public int getSaldo() { 
+        return saldo;
+    }
+
+    // Mutator Methods 
+    
+    public void tambahSaldo(int saldobaru) {
+        if (saldobaru > 0) {
+            this.saldo += saldobaru;
+        }
+    }
+
+    public boolean kurangiSaldo(int ongkos) {
+        if (this.saldo >= ongkos) {
+            this.saldo -= ongkos;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
