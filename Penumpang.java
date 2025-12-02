@@ -55,3 +55,17 @@ public class Penumpang {
         }
     }
 
+// Logika Prioritas 
+    
+    public boolean isPrioritas() {
+        return this.umur > 60 || this.umur < 10 || this.hamil;
+    }
+
+    // Override toString()
+    @Override
+    public String toString() {
+        String status = isPrioritas() ? " (Prioritas)" : " (Biasa)";
+        String hamilStatus = this.hamil ? " - Hamil" : "";
+        return this.nama + " (ID: " + this.id + ", Umur: " + this.umur + hamilStatus + status + ")";
+    }
+}
